@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "rmwebuitools"
+version = "0.0.1"
+description = "Modularized version of the fantastic rmwebuitools (https://github.com/LinusCDE/rmWebUiTools)"
+authors = ["Martin <mail@martinbaur.eu>"]
+license = "?"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+requests = "^2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
