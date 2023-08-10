@@ -3,7 +3,7 @@
 Upload - Upload either PDFs or ePubs to your remarkable.
 '''
 
-import rmwebuitools.api as api
+from . import api 
 import os
 
 from sys import stderr

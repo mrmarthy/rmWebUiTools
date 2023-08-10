@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import api
+from . import api
 from sys import stderr
 
 # ------------------------------
@@ -8,22 +8,21 @@ from sys import stderr
 DEBUG = False
 # ------------------------------
 
-
 def printTree(rmFiles, prefix=(' '*4)):
-    for index, rmFile in enumerate(rmFiles):
-        if index == len(rmFiles) - 1 and not rmFile.isFolder:
-            print('%s└── %s' % (prefix, rmFile.name))
-        else:
-            print('%s├── %s' % (prefix, rmFile.name))
+        for index, rmFile in enumerate(rmFiles):
+            if index == len(rmFiles) - 1 and not rmFile.isFolder:
+                print('%s└── %s' % (prefix, rmFile.name))
+            else:
+                print('%s├── %s' % (prefix, rmFile.name))
 
-        if rmFile.isFolder:
-            printTree(rmFile.files, '%s│   ' % prefix)
+            if rmFile.isFolder:
+                printTree(rmFile.files, '%s│   ' % prefix)
 
-    if len(rmFiles) == 0:
-        print('%s└── <Empty>' % prefix)
+        if len(rmFiles) == 0:
+            print('%s└── <Empty>' % prefix)
 
 
-if __name__ == '__main__':
+def get_tree():
     try:
         print('Fetching file structure...\n', file=stderr)  # Prints to stderr to ignore this if piped into a text file
         files = api.fetchFileStructure()
